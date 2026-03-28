@@ -1,12 +1,11 @@
 # GitHub Pages Static Site
 
-这是一个可以直接部署到 GitHub Pages 的静态网页项目。
+这是一个可以直接部署到 GitHub Pages 的单文件静态网页项目。
 
 ## 文件说明
 
-- `index.html`: 页面入口
-- `style.css`: 页面样式
-- `script.js`: 页面脚本
+- `index.html`: 页面入口，已包含 HTML、CSS、JavaScript
+- `.gitignore`: 忽略系统生成文件
 
 ## 部署方式
 
@@ -17,6 +16,12 @@
 5. 分支选择 `main`，目录选择 `/ (root)`。
 6. 保存后等待几分钟，GitHub 会生成公开访问地址。
 
-## 自定义内容
+## 当前页面内容
 
-你可以直接修改 `index.html` 里的标题和正文，也可以继续增加图片、导航、作品展示等内容。
+当前版本是一个适合小学三年级学生使用的英语单词学习网页，包含：
+
+- Spell 拼写模式
+- Listen 听音模式
+- Choice 选择模式
+- Score 计分功能
+- 内置常见英语单词库
