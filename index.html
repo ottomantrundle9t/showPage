@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>English Words Fun</title>
+  <title>英语单词乐园</title>
   <meta name="description" content="适合小学三年级学生练习英语单词的小网页应用。" />
   <style>
     * {
@@ -265,8 +265,8 @@
   <main class="app">
     <section class="topbar">
       <div>
-        <h1 class="title">English Words Fun</h1>
-        <p class="subtitle">三年级英语单词小练习</p>
+        <h1 class="title">英语单词乐园</h1>
+        <p class="subtitle">适合小学三年级学生的英语单词练习</p>
       </div>
       <div class="scoreboard">Score: <span id="score">0</span></div>
     </section>
@@ -279,20 +279,20 @@
 
     <section class="word-card">
       <div>
-        <p class="word-label">Current Word</p>
+        <p class="word-label">当前单词</p>
         <h2 class="word-display" id="wordDisplay">apple</h2>
       </div>
     </section>
 
     <section class="panel">
-      <p class="helper-text" id="helperText">Look at the word and type the spelling.</p>
+      <p class="helper-text" id="helperText">先看单词，再在下面输入正确拼写。</p>
 
       <div id="inputArea">
         <input
           id="answerInput"
           class="answer-input"
           type="text"
-          placeholder="Type the word here"
+          placeholder="请在这里输入单词"
           autocomplete="off"
         />
       </div>
@@ -360,7 +360,7 @@
 
     checkBtn.addEventListener("click", () => {
       if (currentMode === "choice") {
-        feedbackMessage("Please click one answer below.", "error");
+        feedbackMessage("请选择下面的一个正确答案。", "error");
         return;
       }
 
@@ -368,14 +368,14 @@
       const correctAnswer = normalize(words[currentIndex]);
 
       if (!userAnswer) {
-        feedbackMessage("Please type your answer first.", "error");
+        feedbackMessage("请先输入你的答案。", "error");
         return;
       }
 
       if (userAnswer === correctAnswer) {
         markCorrect();
       } else {
-        feedbackMessage("Try again! The correct word is: " + words[currentIndex], "error");
+        feedbackMessage("再试一次。正确答案是：" + words[currentIndex], "error");
       }
     });
 
@@ -394,11 +394,11 @@
       const currentWord = words[currentIndex];
       const showRealWord = currentMode !== "listen";
 
-      wordDisplay.textContent = showRealWord ? currentWord : "Listen Carefully!";
+      wordDisplay.textContent = showRealWord ? currentWord : "请认真听发音";
       helperText.textContent = getHelperText();
       answerInput.placeholder = currentMode === "listen"
-        ? "Listen and type the word"
-        : "Type the word here";
+        ? "听发音后输入单词"
+        : "请在这里输入单词";
 
       inputArea.hidden = currentMode === "choice";
       choiceArea.hidden = currentMode !== "choice";
@@ -410,19 +410,19 @@
         answerInput.value = "";
       }
 
-      wordCount.textContent = "Word " + (currentIndex + 1) + " / " + words.length;
+      wordCount.textContent = "当前进度：" + (currentIndex + 1) + " / " + words.length;
     }
 
     function getHelperText() {
       if (currentMode === "spell") {
-        return "Look at the word and type the spelling.";
+        return "请看上面的单词，然后输入正确拼写。";
       }
 
       if (currentMode === "listen") {
-        return "Click Play Sound, listen carefully, and type the word.";
+        return "点击播放发音，认真听，再输入你听到的单词。";
       }
 
-      return "Choose the correct word from the three options.";
+      return "请从下面三个选项中选出正确单词。";
     }
 
     function createChoiceOptions() {
@@ -460,7 +460,7 @@
           .find((item) => item.textContent === correctWord)
           .classList.add("correct");
         answeredCurrent = true;
-        feedbackMessage("Oops! The correct word is: " + correctWord, "error");
+        feedbackMessage("答错了，正确答案是：" + correctWord, "error");
       }
     }
 
@@ -470,7 +470,7 @@
         scoreEl.textContent = score;
         answeredCurrent = true;
       }
-      feedbackMessage("Great job! +1 point", "success");
+      feedbackMessage("答对了，得 1 分。", "success");
     }
 
     function nextWord() {
@@ -495,7 +495,7 @@
 
     function speakWord(text) {
       if (!("speechSynthesis" in window)) {
-        feedbackMessage("This browser does not support sound playback.", "error");
+        feedbackMessage("当前浏览器暂不支持语音播放。", "error");
         return;
       }
 
