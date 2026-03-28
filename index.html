@@ -654,32 +654,244 @@
     }
 
     @media (max-width: 860px) {
+      body {
+        background:
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 22%),
+          linear-gradient(180deg, #94dbff 0%, #dff6ff 52%, #fff5d7 100%);
+      }
+
       .hero,
       .lesson-grid {
         grid-template-columns: 1fr;
+      }
+
+      .app {
+        width: min(100% - 20px, 1000px);
+        margin: 16px auto;
+        padding: 20px;
+        border-radius: 32px;
+      }
+
+      .app::before {
+        width: 124px;
+        height: 124px;
+        top: -30px;
+        right: -14px;
+      }
+
+      .app::after {
+        right: 74px;
+        top: 44px;
+        transform: scale(0.8);
+      }
+
+      .cloud {
+        left: 24px;
+        top: 34px;
+        transform: scale(0.82);
+      }
+
+      .sticker {
+        left: auto;
+        right: 18px;
+        bottom: 118px;
+        width: 62px;
+        height: 62px;
+      }
+
+      .hero-panel,
+      .hero-side,
+      .panel,
+      .side-card {
+        border-radius: 26px;
+      }
+
+      .hero-panel {
+        padding: 22px;
+      }
+
+      .hero-side {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+      }
+
+      .lesson-grid {
+        gap: 16px;
+      }
+
+      .side-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .word-card {
+        min-height: 200px;
+      }
+
+      .word-display {
+        font-size: clamp(2.3rem, 8vw, 4.2rem);
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .action-btn {
+        min-width: 0;
+        width: 100%;
+        padding-inline: 14px;
+      }
+
+      .choice-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .choice-btn {
+        min-height: 76px;
       }
     }
 
     @media (max-width: 680px) {
       .app {
-        padding: 18px;
-        border-radius: 28px;
+        width: calc(100% - 14px);
+        margin: 8px auto 12px;
+        padding: 14px;
+        border-width: 3px;
+        border-radius: 24px;
+      }
+
+      .app::before,
+      .app::after,
+      .cloud,
+      .sticker {
+        display: none;
+      }
+
+      .hero {
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .hero-panel,
+      .hero-side,
+      .panel,
+      .side-card,
+      .scoreboard,
+      .mini-card,
+      .word-card {
+        border-radius: 22px;
+      }
+
+      .hero-panel {
+        padding: 18px 16px;
+      }
+
+      .title {
+        margin-top: 14px;
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+      }
+
+      .subtitle {
+        font-size: 0.95rem;
+        line-height: 1.65;
+      }
+
+      .hero-tips {
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .hero-tip,
+      .eyebrow,
+      .word-stage {
+        font-size: 0.86rem;
+      }
+
+      .hero-side,
+      .side-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .scoreboard,
+      .mini-card,
+      .side-card,
+      .panel {
+        padding: 16px;
+      }
+
+      .score-value {
+        font-size: 2.4rem;
       }
 
       .mode-switcher {
         grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .mode-btn {
+        padding: 14px 12px;
+        border-radius: 18px;
       }
 
       .actions {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 10px;
       }
 
       .action-btn {
-        width: 100%;
+        padding: 14px 18px;
+        border-radius: 18px;
       }
 
       .word-card {
-        min-height: 190px;
+        min-height: 164px;
+        margin-bottom: 14px;
+        padding: 18px 16px 22px;
+      }
+
+      .word-label {
+        margin-bottom: 12px;
+        padding: 7px 12px;
+      }
+
+      .word-display {
+        font-size: clamp(1.9rem, 10vw, 3rem);
+      }
+
+      .helper-text,
+      .feedback {
+        min-height: 0;
+        font-size: 0.95rem;
+      }
+
+      .answer-input {
+        padding: 14px 15px;
+        font-size: 1rem;
+        border-radius: 18px;
+      }
+
+      .choice-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .choice-btn {
+        min-height: 62px;
+        border-radius: 18px;
+      }
+
+      .reward-pop {
+        right: 12px;
+        top: 12px;
+        font-size: 0.9rem;
+        padding: 8px 11px;
+      }
+
+      .burst-star {
+        width: 18px;
+        height: 18px;
       }
     }
   </style>
