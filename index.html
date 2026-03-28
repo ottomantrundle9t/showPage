@@ -11,73 +11,217 @@
     }
 
     :root {
-      --bg-top: #fff7d6;
-      --bg-bottom: #e9f5ff;
-      --panel: #ffffff;
-      --orange: #ff914d;
-      --orange-dark: #ff7a24;
-      --blue: #4a90ff;
-      --blue-dark: #2f74e7;
-      --gray: #eef1f5;
-      --gray-border: #d6dbe4;
-      --text: #2d3748;
-      --success: #25a55b;
-      --error: #e35656;
-      --spell: #ffd86b;
-      --listen: #7fd1ae;
-      --choice: #b19cff;
+      --sky: #e4f3ff;
+      --cream: #fff6da;
+      --paper: rgba(255, 255, 255, 0.96);
+      --ink: #24324a;
+      --muted: #6b7a90;
+      --orange: #ff9c57;
+      --orange-deep: #ff7f41;
+      --blue: #4e8df5;
+      --blue-deep: #2f6fe0;
+      --choice: #eef2f7;
+      --choice-border: #d8dfe9;
+      --success: #1e9d62;
+      --success-bg: #ddf8ea;
+      --error: #dd5454;
+      --error-bg: #ffe3e3;
+      --spell: #ffe17e;
+      --listen: #88dfc5;
+      --pick: #bda7ff;
+      --shadow: 0 24px 60px rgba(70, 99, 140, 0.16);
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Comic Sans MS", "Trebuchet MS", "Microsoft YaHei", sans-serif;
-      background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
-      color: var(--text);
+      font-family: "Trebuchet MS", "Avenir Next Rounded", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 26%),
+        radial-gradient(circle at top right, rgba(255, 243, 210, 0.85), transparent 22%),
+        linear-gradient(180deg, var(--cream) 0%, var(--sky) 100%);
+      color: var(--ink);
     }
 
     .app {
-      width: min(920px, calc(100% - 24px));
+      position: relative;
+      overflow: hidden;
+      width: min(980px, calc(100% - 24px));
       margin: 24px auto;
-      padding: 24px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 18px 40px rgba(81, 121, 170, 0.18);
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 36px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
     }
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+    .app::before,
+    .app::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .app::before {
+      top: -48px;
+      right: -28px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255, 225, 126, 0.4), rgba(255, 225, 126, 0));
+    }
+
+    .app::after {
+      bottom: -72px;
+      left: -36px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(136, 223, 197, 0.28), rgba(136, 223, 197, 0));
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(240px, 0.7fr);
+      gap: 18px;
       margin-bottom: 18px;
     }
 
+    .hero-panel,
+    .hero-side,
+    .panel {
+      position: relative;
+      z-index: 1;
+      border-radius: 30px;
+    }
+
+    .hero-panel {
+      padding: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 28%),
+        linear-gradient(135deg, #ffba73, #ff8a54 58%, #ff784e 100%);
+      color: white;
+      box-shadow: 0 18px 34px rgba(255, 135, 78, 0.26);
+    }
+
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px;
+      background: linear-gradient(180deg, #f8fbff, #eef6ff);
+      border: 1px solid #dcecff;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .topbar {
+      margin-bottom: 20px;
+    }
+
     .title {
-      margin: 0;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin: 16px 0 10px;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.06;
     }
 
     .subtitle {
-      margin: 6px 0 0;
-      color: #617087;
-      font-size: 0.98rem;
+      max-width: 560px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 1.04rem;
+      line-height: 1.8;
+    }
+
+    .hero-tips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hero-tip {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.95rem;
+      font-weight: 700;
     }
 
     .scoreboard {
-      padding: 12px 18px;
-      border-radius: 18px;
-      background: #f4f9ff;
-      border: 2px solid #d6e7ff;
+      padding: 18px 20px;
+      border-radius: 24px;
+      background: #ffffff;
+      border: 1px solid #dbe8ff;
+      box-shadow: 0 14px 28px rgba(87, 126, 189, 0.14);
+    }
+
+    .score-label {
+      color: var(--muted);
+      font-size: 0.92rem;
       font-weight: 700;
-      font-size: 1.1rem;
+    }
+
+    .score-value {
+      margin-top: 4px;
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--blue-deep);
+    }
+
+    .score-subtext {
+      margin-top: 8px;
+      color: #7e8ca2;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .mini-card {
+      padding: 16px 18px;
+      border-radius: 24px;
+      background: #fffef9;
+      border: 1px solid #f0ead7;
+    }
+
+    .mini-card-title {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .mini-card-text {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .lesson-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 18px;
     }
 
     .mode-switcher {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 18px;
     }
 
@@ -85,166 +229,266 @@
     .action-btn,
     .choice-btn {
       border: 0;
-      border-radius: 16px;
+      border-radius: 20px;
       cursor: pointer;
       font: inherit;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease;
     }
 
     .mode-btn:hover,
     .action-btn:hover,
     .choice-btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .mode-btn {
-      padding: 14px 12px;
+      padding: 16px 14px;
+      border: 2px solid rgba(255, 255, 255, 0.55);
       font-weight: 700;
-      color: #233044;
-      box-shadow: 0 8px 18px rgba(68, 91, 123, 0.12);
+      color: var(--ink);
+      box-shadow: 0 12px 24px rgba(89, 108, 136, 0.12);
     }
 
     .mode-btn[data-mode="spell"] {
-      background: var(--spell);
+      background: linear-gradient(180deg, #ffe79a, var(--spell));
     }
 
     .mode-btn[data-mode="listen"] {
-      background: var(--listen);
+      background: linear-gradient(180deg, #a1ead4, var(--listen));
     }
 
     .mode-btn[data-mode="choice"] {
-      background: var(--choice);
+      background: linear-gradient(180deg, #d2c4ff, var(--pick));
     }
 
     .mode-btn.active {
-      outline: 4px solid rgba(45, 55, 72, 0.12);
+      border-color: rgba(36, 50, 74, 0.28);
+      box-shadow: 0 16px 28px rgba(95, 106, 138, 0.2);
       transform: translateY(-1px) scale(1.01);
     }
 
     .word-card {
       display: grid;
       place-items: center;
-      min-height: 180px;
+      min-height: 230px;
       margin-bottom: 18px;
-      padding: 24px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      padding: 24px 24px 30px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.26), transparent 24%),
+        linear-gradient(135deg, var(--orange), var(--orange-deep));
       color: white;
       text-align: center;
-      box-shadow: 0 18px 28px rgba(255, 145, 77, 0.28);
+      box-shadow: 0 22px 34px rgba(255, 144, 79, 0.3);
     }
 
     .word-label {
-      margin: 0 0 12px;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      opacity: 0.9;
+      display: inline-block;
+      margin: 0 0 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      opacity: 0.96;
     }
 
     .word-display {
       margin: 0;
-      font-size: clamp(2rem, 7vw, 4.5rem);
-      line-height: 1.1;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
       word-break: break-word;
+      text-shadow: 0 8px 22px rgba(174, 80, 26, 0.22);
     }
 
     .panel {
-      padding: 18px;
-      border-radius: 24px;
-      background: #fffdf9;
-      border: 2px solid #ffe9d7;
+      padding: 22px;
+      background: #fffefb;
+      border: 1px solid #f2e9d9;
+      box-shadow: 0 14px 28px rgba(92, 111, 142, 0.08);
     }
 
     .helper-text {
-      margin: 0 0 14px;
-      color: #5d6b80;
+      margin: 0 0 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f6faff, #edf5ff);
+      color: #4f6079;
       font-size: 1rem;
+      line-height: 1.7;
     }
 
     .answer-input {
       width: 100%;
-      padding: 14px 16px;
-      border: 2px solid #d9e1ec;
-      border-radius: 16px;
-      font-size: 1.1rem;
+      padding: 16px 18px;
+      border: 2px solid #dce5f0;
+      border-radius: 18px;
+      background: #ffffff;
+      font-size: 1.12rem;
       outline: none;
     }
 
     .answer-input:focus {
-      border-color: #8ab7ff;
-      box-shadow: 0 0 0 4px rgba(74, 144, 255, 0.16);
+      border-color: #90b8ff;
+      box-shadow: 0 0 0 5px rgba(78, 141, 245, 0.14);
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 18px;
     }
 
     .action-btn {
-      padding: 13px 20px;
-      background: var(--blue);
+      min-width: 132px;
+      padding: 14px 22px;
+      background: linear-gradient(180deg, #6da7ff, var(--blue));
       color: white;
       font-weight: 700;
-      box-shadow: 0 10px 20px rgba(74, 144, 255, 0.25);
+      box-shadow: 0 14px 24px rgba(78, 141, 245, 0.24);
     }
 
     .action-btn:hover {
-      background: var(--blue-dark);
+      background: linear-gradient(180deg, #5e99f6, var(--blue-deep));
     }
 
     .choice-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
     }
 
     .choice-btn {
-      min-height: 58px;
-      padding: 12px;
-      background: var(--gray);
-      color: #344053;
-      border: 2px solid var(--gray-border);
+      min-height: 72px;
+      padding: 14px;
+      background: linear-gradient(180deg, #f8fafc, var(--choice));
+      color: #334155;
+      border: 2px solid var(--choice-border);
       font-weight: 700;
+      box-shadow: 0 10px 18px rgba(117, 136, 166, 0.08);
     }
 
     .choice-btn.correct {
-      background: #d9f7e5;
+      background: linear-gradient(180deg, #ecfff5, var(--success-bg));
       border-color: #7fd1ae;
+      color: var(--success);
     }
 
     .choice-btn.wrong {
-      background: #ffe0e0;
-      border-color: #f09b9b;
+      background: linear-gradient(180deg, #fff1f1, var(--error-bg));
+      border-color: #f0a0a0;
+      color: var(--error);
     }
 
     .feedback {
-      min-height: 32px;
+      min-height: 58px;
       margin-top: 16px;
-      font-size: 1.05rem;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: #f6f8fb;
+      color: #6f7c91;
+      font-size: 1.02rem;
       font-weight: 700;
+      line-height: 1.6;
     }
 
     .feedback.success {
+      background: linear-gradient(180deg, #eefdf5, var(--success-bg));
       color: var(--success);
     }
 
     .feedback.error {
+      background: linear-gradient(180deg, #fff2f2, var(--error-bg));
       color: var(--error);
     }
 
     .word-count {
       margin-top: 14px;
-      color: #6f7c91;
+      color: #7a879b;
       font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .side-panel {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .side-card {
+      padding: 20px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #fefefe, #f7fbff);
+      border: 1px solid #dfebf8;
+      box-shadow: 0 14px 24px rgba(104, 125, 156, 0.1);
+    }
+
+    .side-card h3 {
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .side-item {
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #e7eef7;
+      color: #526175;
+      line-height: 1.6;
+      font-size: 0.96rem;
+    }
+
+    .progress-ring {
+      display: grid;
+      place-items: center;
+      width: 124px;
+      height: 124px;
+      margin: 8px auto 16px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #ffffff 0 48px, transparent 49px),
+        conic-gradient(#4e8df5 0deg, #4e8df5 210deg, #dce7f5 210deg, #dce7f5 360deg);
+      box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.65);
+    }
+
+    .progress-ring span {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--blue-deep);
+    }
+
+    .word-stage {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-top: 16px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .lesson-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 680px) {
       .app {
         padding: 18px;
+        border-radius: 28px;
       }
 
       .mode-switcher {
@@ -258,55 +502,104 @@
       .action-btn {
         width: 100%;
       }
+
+      .word-card {
+        min-height: 190px;
+      }
     }
   </style>
 </head>
 <body>
   <main class="app">
-    <section class="topbar">
+    <section class="hero">
+      <div class="hero-panel">
+        <div class="topbar">
+          <div class="eyebrow">英语单词学习小站</div>
+          <h1 class="title">英语单词乐园</h1>
+          <p class="subtitle">通过看单词、听发音和做选择题，轻松练习拼写与记忆，让学习更像一场小游戏。</p>
+          <div class="hero-tips">
+            <span class="hero-tip">大声读出来</span>
+            <span class="hero-tip">认真听发音</span>
+            <span class="hero-tip">答对就加分</span>
+          </div>
+          <div class="word-stage" id="wordCount">当前进度：1 / 55</div>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="scoreboard">
+          <div class="score-label">当前得分</div>
+          <div class="score-value"><span id="score">0</span></div>
+          <div class="score-subtext">每答对一次就加 1 分，看看你能得到多少分。</div>
+        </div>
+
+        <div class="mini-card">
+          <p class="mini-card-title">学习小提示</p>
+          <p class="mini-card-text">不会的单词也没关系，多听几次，多读几遍，很快就记住了。</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="lesson-grid">
       <div>
-        <h1 class="title">英语单词乐园</h1>
-        <p class="subtitle">适合小学三年级学生的英语单词练习</p>
-      </div>
-      <div class="scoreboard">得分：<span id="score">0</span></div>
-    </section>
+        <section class="mode-switcher">
+          <button class="mode-btn active" data-mode="spell" type="button">拼写模式</button>
+          <button class="mode-btn" data-mode="listen" type="button">听音模式</button>
+          <button class="mode-btn" data-mode="choice" type="button">选择模式</button>
+        </section>
 
-    <section class="mode-switcher">
-      <button class="mode-btn active" data-mode="spell" type="button">拼写模式</button>
-      <button class="mode-btn" data-mode="listen" type="button">听音模式</button>
-      <button class="mode-btn" data-mode="choice" type="button">选择模式</button>
-    </section>
+        <section class="word-card">
+          <div>
+            <p class="word-label">当前单词</p>
+            <h2 class="word-display" id="wordDisplay">apple</h2>
+          </div>
+        </section>
 
-    <section class="word-card">
-      <div>
-        <p class="word-label">当前单词</p>
-        <h2 class="word-display" id="wordDisplay">apple</h2>
-      </div>
-    </section>
+        <section class="panel">
+          <p class="helper-text" id="helperText">先看单词，再在下面输入正确拼写。</p>
 
-    <section class="panel">
-      <p class="helper-text" id="helperText">先看单词，再在下面输入正确拼写。</p>
+          <div id="inputArea">
+            <input
+              id="answerInput"
+              class="answer-input"
+              type="text"
+              placeholder="请在这里输入单词"
+              autocomplete="off"
+            />
+          </div>
 
-      <div id="inputArea">
-        <input
-          id="answerInput"
-          class="answer-input"
-          type="text"
-          placeholder="请在这里输入单词"
-          autocomplete="off"
-        />
-      </div>
+          <div class="choice-grid" id="choiceArea" hidden></div>
 
-      <div class="choice-grid" id="choiceArea" hidden></div>
+          <div class="actions">
+            <button class="action-btn" id="playBtn" type="button">播放发音</button>
+            <button class="action-btn" id="checkBtn" type="button">检查答案</button>
+            <button class="action-btn" id="nextBtn" type="button">下一个</button>
+          </div>
 
-      <div class="actions">
-        <button class="action-btn" id="playBtn" type="button">播放发音</button>
-        <button class="action-btn" id="checkBtn" type="button">检查答案</button>
-        <button class="action-btn" id="nextBtn" type="button">下一个</button>
+          <div class="feedback" id="feedback">准备好了吗？我们开始今天的单词练习吧。</div>
+        </section>
       </div>
 
-      <div class="feedback" id="feedback"></div>
-      <div class="word-count" id="wordCount"></div>
+      <aside class="side-panel">
+        <section class="side-card">
+          <h3>今天怎么玩</h3>
+          <div class="side-list">
+            <div class="side-item">拼写模式：看单词，自己拼出来。</div>
+            <div class="side-item">听音模式：听发音，写出正确单词。</div>
+            <div class="side-item">选择模式：从三个选项里找出正确答案。</div>
+          </div>
+        </section>
+
+        <section class="side-card">
+          <div class="progress-ring">
+            <span>学习中</span>
+          </div>
+          <div class="side-list">
+            <div class="side-item">每次点击“下一个”，都会切换到新的练习单词。</div>
+            <div class="side-item">如果答错了也没关系，提示区会告诉你正确答案。</div>
+          </div>
+        </section>
+      </aside>
     </section>
   </main>
 
